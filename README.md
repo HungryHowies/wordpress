@@ -13,6 +13,45 @@ Steps are found [here](https://github.com/HungryHowies/wordpress/blob/b93e3dcff4
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Follow this guid
 https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-ubuntu-22-04-with-a-lamp-stack 
 

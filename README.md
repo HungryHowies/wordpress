@@ -1,4 +1,4 @@
-# wordpress
+# Wordpress Setup
 
 This Documentation is basic setup for Wordpress using Let's Encrypt. 
 Prerequisite:

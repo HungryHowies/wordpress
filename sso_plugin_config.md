@@ -25,16 +25,22 @@ systemctl restart apache2
 
 ```
 sudo apt-get install -y php8.1-fpm
+```
+```
 sudo apt-get install -y imagemagick
+```
+```
 sudo apt-get install -y php-imagick
+```
+```
 sudo phpenmod imagick
 ```
 
-Restart services
+Restart these services.
+
 ```
 systemctl restart php8.1-fpm
+```
+```
 systemctl restart apache2
 ```
-
-
-  

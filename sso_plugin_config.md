@@ -4,6 +4,8 @@
 
 Install Plugin
 * miniOrange SSO using SAML 2.0
+* Sucuri (for extra securty)
+  
 fill out the requirements
 
 ## Cacheing

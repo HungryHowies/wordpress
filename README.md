@@ -1,14 +1,15 @@
 # wordpress
 
 This Documentation is basic setup for Wordpress using Let's Encrypt. 
+Prerequisite:
 
 * Ubuntu 22.0.4
-* All updates/Upgrade are completed
-* Network
-* DNS
-* 
+* All updates/Upgrades are completed.
+* Network configured.
+* DNS/FQDN is set. 
+  
 
-Before Install WordPress a LAMP stack and secured with TLS/SSL certificates.
+Before Setting up WordPress, LAMP stack steps need to be executed and once completed steps for TLS/SSL certificates need to be install/configured.
 
 ### Install Install Linux, Apache, MySQL, PHP (LAMP).
 
@@ -21,18 +22,25 @@ Steps are found [here](https://github.com/HungryHowies/wordpress/blob/6a573c7283
 ## Creating a MySQL Database and User for WordPress
 
 log into the MySQL root (administrative) account by issuing the following command.
+
 ```
 mysql -u root -p
 ```
-create a dedicated database for WordPress to control.
+
+Create a dedicated database for WordPress to control.
+
 ```
 CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 ```
-create this user by running the following command.
+
+Create a user by running the following command.
+
 ```
 CREATE USER 'wordpressuser'@'%' IDENTIFIED  BY 'password';
 ```
-let the database know that your wordpressuser should have complete access to the database you set up:
+
+These commands will let the database know that your wordpressuser should have complete access to the database.
+
 ```
 GRANT ALL ON wordpress.* TO 'wordpressuser'@'%';
 ```
@@ -42,11 +50,12 @@ FLUSH PRIVILEGES;
 ```
 EXIT;
 ```
+
 ## Installing Additional PHP Extensions
 
-When install LAMP the require minimal set of extensions in order to get PHP to communicate with MySQL. 
+When LAMP was installed it only required minimal set of extensions in order to get PHP to communicate with MySQL. 
 
-PHP extensions for use with WordPress.
+In this step PHP extensions are installed for use with WordPress.
 
 ```
  apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip
@@ -58,9 +67,9 @@ Restart  Apache serivce.
 sudo systemctl restart apache2
 ```
 
-##  Adjusting Apache’s Configuration to Allow for .htaccess Overrides and Rewrites
+##  Adjusting Apache’s Configuration to Allow for *.htaccess* Overrides and Rewrites
 
-To allow .htaccess files, you need to set the AllowOverride directive within a Directory block pointing to your document root. Add the following content inside the VirtualHost block in your configuration file, making sure to use the correct web root directory:
+To allow *.htaccess* files, you need to set the *AllowOverride* directive within a "Directory" block pointing to your document root. Add the following content inside the VirtualHost block in your configuration file, making sure to use the correct web root directory:
 
 Edit file.
 
@@ -77,7 +86,8 @@ vi  /etc/apache2/sites-available/wordpress.conf
 </VirtualHost>
 ```
 
-The results should look lke this
+The end results should look lke this.
+
 ```
 VirtualHost *:80>
     ServerName howie.hungry-howard.com
@@ -95,78 +105,101 @@ RewriteCond %{SERVER_NAME} =www.howie.hungry-howard.com
 RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>
 ```
+
 ### Enabling the Rewrite Module
 
 ```
 sudo a2enmod rewrite
 ```
-Test configurations
+
+Test the configurations.
+
 ```
 sudo apache2ctl configtest
 ```
+
 ## Downloading WordPress
 
 First, change into a writable directory and then download and set up WordPress.
 
-Change directory
+Change to the TMP directory.
+
 ```
 cd /tmp
 ```
-Then download the compressed release with the following curl command
+
+Then download the compressed release with the following curl command.
+
 ```
 curl -O https://wordpress.org/latest.tar.gz
 ```
 ```
 tar xzvf latest.tar.gz
 ```
-move these files into your document root momentarily. Before doing so, you can add a dummy .htaccess file so that this will be available for WordPress to use later.
+
+Move these files into your document root momentarily. Before doing so, you can add a dummy *.htaccess* file so that this will be available for WordPress to use later.
+
 ```
 touch /tmp/wordpress/.htaccess
 ```
-touch /tmp/wordpress/.htaccess
+
+Copy the sample configuration PHP file.
+
 ```
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 ```
 
-create the upgrade directory so that WordPress won’t run into permissions issues when trying to do this on its own following an update to its software:
+Create the "Upgrade" directory so that WordPress won’t run into permissions issues when trying to do this on its own following an update to its software.
+
 ```
 mkdir /tmp/wordpress/wp-content/upgrade
 ```
-copy the entire contents of the directory into your document root.
+
+Copy the entire contents of the directory into your document root.
+
 ```
 sudo cp -a /tmp/wordpress/. /var/www/wordpress
 ```
+
 ## Configuring the WordPress Directory
 
-### Configuring the WordPress Directory
-
 Start by giving ownership of all the files to the www-data user and group. This is the user that the Apache web server runs as, and Apache will need to be able to read and write WordPress files in order to serve the website and perform automatic updates.
+
 ```
  chown -R www-data:www-data /var/www/wordpress
 ```
-find commands to set the correct permissions on the WordPress directories and files
+
+The *find* commands to set the correct permissions on the WordPress directories and files.
+
 ```
 sudo find /var/www/wordpress/ -type d -exec chmod 750 {} \;
 ```
-finds each file within the directory and sets their permissions to 640:
+
+This command finds each file within the directory and sets their permissions to 640.
+
 ```
 sudo find /var/www/wordpress/ -type f -exec chmod 640 {} \;
 ```
+
 ### Setting Up the WordPress Configuration File
 
-first task will be to adjust some secret keys to provide a level of security for your installation.
-To grab secure values from the WordPress secret key generator, run the following:
+The first task will be to adjust some secret keys to provide a level of security for your installation.
+To grab secure values from the WordPress secret key generator, run the following.
 
 ```
 curl -s https://api.wordpress.org/secret-key/1.1/salt/
 ```
-You will receive unique values. Copy and save these value to adjust  Worpress configuration file in the next following steps.
 
-Next, open the WordPress configuration file:
+You will receive unique values. Copy and save these value to adjust Worpress configuration file in the next following steps.
+
+Next, open the WordPress configuration file.
+
 ```
 sudo nano /var/www/wordpress/wp-config.php
 ```
-Find the section that contains the example values for those settings:
+
+Find the section that contains the example values for those settings.
+
 ```
 . . .
 
@@ -182,7 +215,7 @@ define('NONCE_SALT',       'put your unique phrase here');
 . . .
 ```
 
-Delete those lines and insert the values you copied from the command line.
+Delete those lines and insert the values you copied from the command line using the secret key generator from the step above.
 
 Next, modify some of the database connection settings at the beginning of the file.
 
@@ -209,13 +242,13 @@ define( 'DB_COLLATE', '' );
 
 Save and close the file when you are finished.
 
-Completing the Installation Through the Web Interface
+## Completing the Installation Through the Web Interface
 
- Eithe enter your IP Address or FQDN
+Either enter your IP Address or FQDN.
+
 ```
  https://wordpress.domian.com
- ```
+```
 
-Follow this guid
-https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-ubuntu-22-04-with-a-lamp-stack 
+
 

@@ -1,3 +1,7 @@
+# SSO Plugin and Cache
+
+ The following documentaion show what plugin to use and  how to configure Cache.
+
 Install Plugin
 * miniOrange SSO using SAML 2.0
 fill out the requirements

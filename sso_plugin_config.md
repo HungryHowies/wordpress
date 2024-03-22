@@ -23,6 +23,8 @@ Restart service
 systemctl restart apache2
 ```
 
+Install the following packages.
+
 ```
 sudo apt-get install -y php8.1-fpm
 ```
@@ -32,6 +34,9 @@ sudo apt-get install -y imagemagick
 ```
 sudo apt-get install -y php-imagick
 ```
+
+Load imagick  for PHP.
+
 ```
 sudo phpenmod imagick
 ```

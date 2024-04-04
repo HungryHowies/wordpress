@@ -38,3 +38,7 @@ This script will prompt you to answer a series of questions in order to configur
 sudo certbot --apache
 ```
 If any errors shown they should be correct before moving on to install Wordpress.
+
+## Cloudflare using DNS Proxy
+
+https://www.digitalocean.com/community/tutorials/how-to-host-a-website-using-cloudflare-and-nginx-on-ubuntu-22-04

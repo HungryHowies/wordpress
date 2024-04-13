@@ -19,7 +19,7 @@ Steps are found [here](https://github.com/HungryHowies/wordpress/blob/b93e3dcff4
 
 Steps are found [here](https://github.com/HungryHowies/wordpress/blob/6a573c7283b7b85ce81a91060fdc3a63c3011387/certificates_lets_encrypt.md)
 
-### SSO with Mini-Orange
+### (Optional) SSO with Mini-Orange
 
 steps are found [here](https://github.com/HungryHowies/wordpress/blob/10196d488c7321adb47e0768ab6a5ab4757697d4/sso_plugin_config.md)
 

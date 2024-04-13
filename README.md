@@ -21,7 +21,7 @@ Steps are found [here](https://github.com/HungryHowies/wordpress/blob/6a573c7283
 
 ### SSO with Mini-Orange
 
-steps are found [here](https://github.com/HungryHowies/wordpress/blob/1bdebc8838fbe1dad8c03831c780ff5c0eb4ef9c/sso_plugin_config.md)
+steps are found [here](https://github.com/HungryHowies/wordpress/blob/10196d488c7321adb47e0768ab6a5ab4757697d4/sso_plugin_config.md)
 
 ## Creating a MySQL Database and User for WordPress
 

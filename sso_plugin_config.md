@@ -73,8 +73,10 @@ SAML Login URL* : https://zitadel-build.domain.com/saml/v2/SSO
 ```
 
 **NOTE**: You will find this certificate using Zitadel end point *saml/v2/metadata*. It also can be downloaded after you make your Project/Application on Zitadel Web UI.
+
+X.509 Certificate* :
 ```
-X.509 Certificate* : -----BEGIN CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
 MIIFITCCAwmgAwIBAgIBfjANBgkqhkiG9w0BAQsFADAsMRAwDgYDVQQKEwdaSVRB
 REVMMRgwFgYDVQQDEw9aSVRBREVMIFNBTUwgQ0EwHhcNMjQwMjE5MjIwMzEzWhcN
 MjUwMjE5MDQwMzEzWjAyMRAwDgYDVQQKEwdaSVRBREVMMR4wHAYDVQQDExVaSVRB

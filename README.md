@@ -90,8 +90,8 @@ The end results should look lke this.
 
 ```
 VirtualHost *:80>
-    ServerName howie.hungry-howard.com
-    ServerAlias www.howie.hungry-howard.com
+    ServerName howie.domain.com
+    ServerAlias www.howie.domain.com
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/wordpress
     ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -100,8 +100,8 @@ VirtualHost *:80>
         AllowOverride All
     </Directory>
 RewriteEngine on
-RewriteCond %{SERVER_NAME} =howie.hungry-howard.com [OR]
-RewriteCond %{SERVER_NAME} =www.howie.hungry-howard.com
+RewriteCond %{SERVER_NAME} =howie.domain.com [OR]
+RewriteCond %{SERVER_NAME} =www.howie.domain.com
 RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>
 ```

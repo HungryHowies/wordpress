@@ -1,6 +1,6 @@
 # SSO Plugin and Cache
 
- The following documentaion show what plugin to use and  how to configure Cache.
+ The following documentaion will show what plugin/s to use and how to configure Cache.
 
 Install Plugin
 * miniOrange SSO using SAML 2.0
@@ -9,18 +9,24 @@ Install Plugin
 Ensure the following is installed and configured.
 
 ## Cacheing
-edit file
+
+Edit file
+
 ```
 vi /etc/php/8.1/apache2/php.ini
 ```
-Adjust these lines
+
+Adjust these lines.
+
 ```
 opcache.enable=1
 opcache.memory_consumption=128
 opcache.max_accelerated_files=10000
 opcache.revalidate_freq=200
 ```
-Restart service
+
+Restart Apache2 service.
+
 ```
 systemctl restart apache2
 ```
@@ -37,7 +43,7 @@ sudo apt-get install -y imagemagick
 sudo apt-get install -y php-imagick
 ```
 
-Load imagick  for PHP.
+Load imagick for PHP.
 
 ```
 sudo phpenmod imagick
@@ -54,9 +60,10 @@ systemctl restart apache2
 
 ### miniOrange SSO using SAML 2.0
 
-Following setup/configurations is for MiniOrange and Zitadel.
+Following setup/configurations is for MiniOrange and Zitadel IDP.
 
-Navigate to the Plugin MiniOrange --> tap called Serice Provider Metadata. Provide the following settings.
+Navigate to the Plugin MiniOrange --> tab called *Serice Provider Metadata*. 
+Provide the following settings.
 
 Example:
 ```
@@ -65,7 +72,7 @@ IdP Entity ID or Issuer* : https://zitadel-build.domain.com/saml/v2/metadata
 SAML Login URL* : https://zitadel-build.domain.com/saml/v2/SSO
 ```
 
-**NOTE**: You will find this certificate using Zitadel end point *saml/v2/metadata*. It also can be downloaded after you make your Project /Application on Zitadel Web UI.
+**NOTE**: You will find this certificate using Zitadel end point *saml/v2/metadata*. It also can be downloaded after you make your Project/Application on Zitadel Web UI.
 ```
 X.509 Certificate* : -----BEGIN CERTIFICATE-----
 MIIFITCCAwmgAwIBAgIBfjANBgkqhkiG9w0BAQsFADAsMRAwDgYDVQQKEwdaSVRB
@@ -83,18 +90,17 @@ jMYSVblwVlEZLMcsrLeeMcpRYRCDyaAABJ3tqawAUUkGAwX7+vuuVoOPBpGYYIzm
 sA8fuzka0AFmNDKmeOT7La0hfP91
 -----END CERTIFICATE-----
 ```
-Navigate to the tab called "Service Provider Metadata".  Click the download button for the Metadata XML File.
-Which will be upload to Zitadel.
+Navigate to the tab called "Service Provider Metadata".  Click the download button for the Metadata XML File save this file to be accessed later. WordPress Metedata XML file will be upload to Zitadel later when making Project/Application.
 
-Next Configure Attribute/Role Mapping tab. Scroll down to "Role Mapping" and choose  the default role. In this example its for Administrators
+Next Configure Attribute/Role Mapping tab. Scroll down to "Role Mapping" and choose  the default role. In this example it will be set for Administrators.
 
 ![image](https://github.com/HungryHowies/wordpress/assets/22652276/fe5f1ad5-db4d-43dd-8fef-c0d940a27e79)
 
-Once completed click the " Update" button.
+Once completed click the "Update" button.
 
-Now any SSO User for WordPress has a Admin role.
+**NOTE:** SSO User for WordPress has a Admin role when logging in.
 
-# Project and Application
+# Zitadel Projects and Applications
 
 Log into Zitadel instance.
 

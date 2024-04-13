@@ -11,13 +11,17 @@ Prerequisite:
 
 Before Setting up WordPress, LAMP stack steps need to be executed and once completed steps for TLS/SSL certificates need to be install/configured.
 
-### Install Install Linux, Apache, MySQL, PHP (LAMP).
+### Install  Linux, Apache, MySQL, PHP (LAMP).
 
 Steps are found [here](https://github.com/HungryHowies/wordpress/blob/b93e3dcff49dbe93bf39dc9dfaa9a1ff5b7f990b/lamp_setup.md)
 
 ### Secure Apache with Let's Encrypt
 
 Steps are found [here](https://github.com/HungryHowies/wordpress/blob/6a573c7283b7b85ce81a91060fdc3a63c3011387/certificates_lets_encrypt.md)
+
+### SSO with Mini-Orange
+
+steps are found [here](https://github.com/HungryHowies/wordpress/blob/1bdebc8838fbe1dad8c03831c780ff5c0eb4ef9c/sso_plugin_config.md)
 
 ## Creating a MySQL Database and User for WordPress
 

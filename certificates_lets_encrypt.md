@@ -1,4 +1,4 @@
-# Apache with Let's Encrypt on Ubuntu 22.04
+ample# Apache with Let's Encrypt on Ubuntu 22.04
 
 ### Installation Let's encrypt
 
@@ -40,5 +40,7 @@ sudo certbot --apache
 If any errors shown they should be correct before moving on to install Wordpress.
 
 ## Cloudflare using DNS Proxy
+
+Example:
 
 https://www.digitalocean.com/community/tutorials/how-to-host-a-website-using-cloudflare-and-nginx-on-ubuntu-22-04

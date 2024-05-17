@@ -254,5 +254,8 @@ Either enter your IP Address or FQDN.
  https://wordpress.domian.com
 ```
 
+AWS LightSail  increase Upload size
+
+https://rajivverma.me/blog/tech/how-to-increase-or-modify-file-upload-limit-on-amazon-lightsail-instance/
 
 
